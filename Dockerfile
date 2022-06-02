@@ -6,7 +6,7 @@ RUN set -eux \
   ; apt-get update -y \
   ; DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-      tzdata curl jq \
+      tzdata curl ca-certificates jq \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   \
