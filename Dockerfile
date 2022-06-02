@@ -12,5 +12,7 @@ RUN set -eux \
   \
   ; nu_url=$(curl -sSL https://api.github.com/repos/nushell/nushell/releases -H 'Accept: application/vnd.github.v3+json' \
           | jq -r '[.[]|select(.prerelease == false)][0].assets[].browser_download_url' | grep linux)  \
+  ; curl -sSL ${nu_url} | tar zxvf - --strip-components=2 -C /usr/local/bin \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
+ENTRYPOINT ["/usr/local/bin/nu"]

@@ -15,3 +15,5 @@ RUN set -eux \
           | jq -r '[.[]|select(.prerelease == false)][0].assets[].browser_download_url' | grep linux)  \
   ; curl -sSL ${nu_url} | tar zxvf - --strip-components=2 -C /usr/local/bin \
   ; rm -rf /var/cache/apk/*
+
+ENTRYPOINT ["/usr/local/bin/nu"]
